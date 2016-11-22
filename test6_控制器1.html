@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body  ng-app="test">
+
+
+<div ng-controller="ctrl1">
+    <input type="text"  ng-model="str"><br>
+    a:<span>{{a}}</span>
+</div>
+   a:<span>{{a}}</span>
+
+
+<script type="application/javascript" src="public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+
+    //定义一个叫test的模块
+    var app = angular.module('test',[]);
+
+    app.controller('ctrl1',function($scope){
+        $scope.a=12;
+        console.log($scope.str);
+    });
+
+</script>
+</body>
+</html>

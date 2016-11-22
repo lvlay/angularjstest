@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"  ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body>
+
+<ul ng-controller="ctrl1">
+    <li ng-repeat="item in items">
+        <h3>商品名:{{item.name}}</h3>
+        价格:<span>{{item.price|currency}}</span>
+        上架时间:<span>{{item.time|date:'yyyy年MM月dd HH:mm:ss'}}</span>
+    </li>
+</ul>
+
+
+<script type="application/javascript" src="public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+   //1 首先定义模块
+    var app = angular.module('test',[]);
+   //2 定义控制器
+    app.controller('ctrl1',function ($scope) {
+        //控制器要实现的功能代码 都要定义到匿名的回调函数中
+        //准备要展示的数据
+        $scope.items=[
+            {name:'iphone7黑色',price:7300,time:1479797339365},
+            {name:'iphone7手机壳',price:28.5,time:1479797319365},
+            {name:'mate9 64g',price:3699,time:1479797239365}
+        ]
+    })
+    
+</script>
+</body>
+</html>

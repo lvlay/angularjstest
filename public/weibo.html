@@ -1,0 +1,67 @@
+﻿<html ng-app="zns_weibo" class="ng-scope">
+<head>
+    <meta charset="utf-8">
+    <title>微博ajax接口测试</title>
+    <link href="style/weibo.css" rel="stylesheet" type="text/css">
+</head>
+
+<body ng-controller="weibo" class="ng-scope">
+<div class="znsArea">
+    <!--留言-->
+    <div class="takeComment">
+        <textarea name="textarea" class="takeTextField" id="tijiaoText"></textarea>
+        <div class="takeSbmComment">
+            <input type="button" class="inputs" value="">
+            <span>(可按 Enter 回复)</span>
+        </div>
+    </div>
+    <!--已留-->
+    <div class="commentOn">
+        <div class="noContent">暂无留言</div>
+        <div class="messList">
+            <!-- ngRepeat: reply in replies -->
+            <div class="reply ng-scope" ng-repeat="reply in replies">
+                <p class="replyContent ng-binding">试试</p>
+                <p class="operation">
+                    <span class="replyTime ng-binding">2016-08-30 22:45:47</span>
+                    <span class="handle">
+                    	<a href="javascript:;" class="top ng-binding">1</a>
+                        <a href="javascript:;" class="down_icon ng-binding">5</a>
+                        <a href="javascript:;" class="cut">删除</a>
+                    </span>
+                </p>
+            </div><!-- end ngRepeat: reply in replies -->
+            <div class="reply ng-scope" ng-repeat="reply in replies">
+                <p class="replyContent ng-binding">上的二二</p>
+                <p class="operation">
+                    <span class="replyTime ng-binding">2016-08-30 22:49:07</span>
+                    <span class="handle">
+                    	<a href="javascript:;" class="top ng-binding">200</a>
+                        <a href="javascript:;" class="down_icon ng-binding">1</a>
+                        <a href="javascript:;" class="cut">删除</a>
+                    </span>
+                </p>
+            </div><!-- end ngRepeat: reply in replies -->
+            <div class="reply ng-scope" ng-repeat="reply in replies">
+                <p class="replyContent ng-binding">独特热特特认为他</p>
+                <p class="operation">
+                    <span class="replyTime ng-binding">2015-05-25 23:42:27</span>
+                    <span class="handle">
+                    	<a href="javascript:;" class="top ng-binding">55</a>
+                        <a href="javascript:;" class="down_icon ng-binding">16</a>
+                        <a href="javascript:;" class="cut">删除</a>
+                    </span>
+                </p>
+            </div><!-- end ngRepeat: reply in replies -->
+        </div>
+        <div class="page">
+            <a href="javascript:;" class="active">1</a>
+            <a href="javascript:;">2</a>
+            <a href="javascript:;">3</a>
+        </div>
+    </div>
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script type="application/javascript">
+        var c=12;
+    </script>
+</head>
+<body>
+
+
+<ul ng-init="arr=[12,32,21,53,154]">
+    <li ng-repeat=" item in arr"> {{item}}  </li>
+</ul>
+
+<ul ng-init="jsonStr={name1:'tom',name2:'jack',name3:'lily'}">
+    <li ng-repeat=" (k,v) in jsonStr"> #{{k}}:{{v}}  </li>
+</ul>
+
+<ul ng-init="arr=[12,32,21,53,154]">
+    <li ng-repeat=" (index,value) in arr"> {{index}}.{{value}}  </li>
+</ul>
+
+
+<ul ng-init="users=[{name:'tom',age:21},{name:'jack',age:17},{name:'lily',age:24}]">
+    <li ng-repeat=" u in users"> 姓名:{{u.name}} 年龄:{{u.age}} </li>
+</ul>
+
+
+<script type="application/javascript" src="public/libs/angular.min.js">
+
+</script>
+</body>
+</html>
