@@ -23,13 +23,13 @@
 ##核心1:
 
 * 指令 :  定义在html标签上的一系列以ng开头的自定义属性
-1.ng-app指令: 确定angularJS起作用的范围
-2.ng-bind指令:绑定数据  比较笨重  会将绑定标签的内容全部抹除
-3.ng-model:指定数据模型
-4.ng-init:初始化数据
-5.ng-repeat:循环数据
-6.ng-show  显示 值 true\false
-7.ng-hidden 隐藏  true\false
+    1.ng-app指令: 确定angularJS起作用的范围
+    2.ng-bind指令:绑定数据  比较笨重  会将绑定标签的内容全部抹除
+    3.ng-model:指定数据模型
+    4.ng-init:初始化数据
+    5.ng-repeat:循环数据
+    6.ng-show  显示 值 true\false 
+    7.ng-hidden 隐藏  true\false
 
 ##模板   {{内容}}
 
@@ -43,9 +43,9 @@
 
 ##核心2：
 * 控制器 controller 
-     1.起到连接ng组件与js代码的桥梁作用
-     2.实现业务逻辑的js代码，都应该放到控制器中
-     3.控制器的作用范围是它所在的html的标签范围
+            1.起到连接ng组件与js代码的桥梁作用
+            2.实现业务逻辑的js代码，都应该放到控制器中
+            3.控制器的作用范围是它所在的html的标签范围
 
 * 作用域 $scope 是angular中的顶级作用域对象
 
