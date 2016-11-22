@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+</head>
+<body ng-controller="ctrl1">
+
+
+<script type="application/javascript" src="public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    var app = angular.module('test', []);
+    app.controller('ctrl1', function ($scope, $http) {
+
+        $http.get('http://127.0.0.1:3000/test',
+                {
+                    params:{a:13,b:3},
+                    responseType:'json'
+                }).success(function (result) {
+              console.log(result.data);
+        }).error(function () {
+            alert("失败")
+        })
+    });
+
+</script>
+</body>
+</html>
