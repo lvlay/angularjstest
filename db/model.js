@@ -2,7 +2,7 @@
  * Created by maggie on 16/11/17.
  */
 var mongoose = require('mongoose');
-var dbconfig = require('../dbconfig.js');
+var dbconfig = require('./dbconfig.js');
 
 var ObjectId = mongoose.Schema.Types.ObjectId;
 
@@ -14,6 +14,8 @@ var weiboSchema = new mongoose.Schema({
     ref: {type: Number, default: 0},
     createTime:{type:Date,default:Date.now}
 });
+
+
 
 exports.Weibo = mongoose.model('weibo', weiboSchema);
 
