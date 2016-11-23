@@ -14,16 +14,20 @@
 
             //访问服务器端获得评论列表 并且显示
             //weibo?act=get&page=1
-            $http.get('/weibo', {
-                params: {act: 'get', page: 1},
-                responseType: 'json'
-            }).success(function (arr) {
-                        $scope.replies = arr;
-                    }
-            ).error(function (err) {
-                        console.log(err);
-                    }
-            );
+            var getpage=function(page){
+                $http.get('/weibo', {
+                    params: {act: 'get', page: page},
+                    responseType: 'json'
+                }).success(function (arr) {
+                            $scope.replies = arr;
+                        }
+                ).error(function (err) {
+                            console.log(err);
+                        }
+                );
+
+            }
+            getpage(1);
             //添加留言
 //     weibo?act=add&content=xxx	添加一条
             $scope.submitMsg=function () {
