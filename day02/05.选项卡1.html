@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+       #div1 input{
+           background-color: #ccc;
+       }
+       #div1 input.active{
+           background-color: red;
+       }
+        #div1 div{
+            width:200px;
+            height:200px;
+            background: #669900 ;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<div id="div1" ng-init="now=0">
+    <input type="button" class="{{now==0?'active':''}}" value="国际新闻" ng-click="now=0">
+    <input type="button"  value="国内新闻"  class="{{now==1?'active':''}}"ng-click="now=1">
+    <input type="button"  value="本地新闻" class="{{now==2?'active':''}}"ng-click="now=2">
+    <div ng-show="now==0">国际新闻列表</div>
+    <div ng-show="now==1">国内新闻列表</div>
+    <div ng-show="now==2">本地新闻列表</div>
+
+</div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+
+</script>
+</html>

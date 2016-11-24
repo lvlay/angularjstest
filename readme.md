@@ -56,6 +56,15 @@
   2. date  时间/日期过滤器
 
 
+###修改页面的显示样式
+##
+ 1.直接修改 class或style属性的值,但是填充时要使用{{}}
+ 2.使用ng-class或ng-style 可以直接填充angular中的变量,变量可以是普通的数值,也可以是数组,还可以是json对象
+
+
+###控制页面标签的显示
+* ng-show/ng-hidden   show/hidden实际控制的是display属性
+* ng-if 如果条件为false,那么它所控制的页面元素将会被删除
 
 ## 代码仓库地址
 https://github.com/lvlay/angularjstest

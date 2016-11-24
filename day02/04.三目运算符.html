@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        .div{width:200px;
+            height:300px;
+            background-color: #0099FF;
+        }
+        .div2{width:200px;
+            height:200px;
+            background-color: aquamarine;
+        }
+
+    </style>
+</head>
+<body ng-init="arr=['长沙','北京','上海','广州','深圳'];str='background:yellow'">
+
+    <ul>
+        <li ng-repeat="city in arr" style="{{$index%2==0?str:''}}">{{$index+1}}.{{city}}</li>
+    </ul>
+
+
+    <ul>
+        <li ng-repeat="(k,v) in arr" style="{{k%2==0?str:''}}">{{k+1}}.{{v}}</li>
+    </ul>
+
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+
+</script>
+</html>

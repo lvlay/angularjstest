@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="news">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+       #div1 input{
+           background-color: #ccc;
+       }
+       #div1 input.active{
+           background-color: red;
+       }
+        #div1 div{
+            width:200px;
+            height:200px;
+            background: #669900 ;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<div id="div1" ng-controller="ctrl1">
+    <input type="button" value="{{item.name}}" ng-repeat="item in arr" >
+    <div ng-repeat="item in arr">{{item.content}}</div>
+</div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    //定义模块
+  var app = angular.module('news',[]);
+    app.controller('ctrl1',function ($scope) {
+       $scope.now=0;
+        $scope.arr=[{name:'国内新闻',content:'国内新闻列表'},{name:'国外新闻',content:'国外新闻列表'},
+            {name:'本地新闻',content:'本地新闻列表'},
+            {name:'娱乐新闻',content:'娱乐新闻列表'},
+            {name:'体育新闻',content:'体育新闻列表'}];
+
+    });
+
+</script>
+</html>
