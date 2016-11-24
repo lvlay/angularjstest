@@ -11,11 +11,17 @@
 
             //模拟一个评论的数组
             $scope.replies = [];
-            $scope.pages=[1,2,3,4];
+            //保存总页数的数组  [{no:1,className:'active'},{no:2,className:''},{no:3,className:''}]
+            $scope.pages=[];
+            $scope.curPage=1;
 
             //访问服务器端获得评论列表 并且显示
             //weibo?act=get&page=1
             var getpage=function(page){
+                //获得每一页的数据后 要切换当前页
+                $scope.curPage=page;
+                //也要再次设置当前页标签的显示样式
+                setCur($scope.pages.length);
                 $http.get('/weibo', {
                     params: {act: 'get', page: page},
                     responseType: 'json'
@@ -32,6 +38,39 @@
             getpage(1);
 
             $scope.getpage=getpage;
+
+
+            //设置当前页 的显示效果 count是总页数
+            function  setCur(count)
+            {
+                $scope.pages=[];
+                for(var i=1;i<=count;i++)
+                {
+                    if(i== $scope.curPage)
+                    {
+                        $scope.pages.push({no:i,className:'active'});
+                    }else {
+
+                        $scope.pages.push({no:i,className:''});
+                    }
+                }
+
+            }
+
+            //访问服务器端,获取总页数
+            $http.get('weibo',{
+                params:{act:'get_page_count'},
+                responseType:'json'
+            }).success(function (result) {
+                //重新设置 每一页的选项标签样式
+                setCur(result.count);
+                console.log(result.count);
+            }).error(function () {
+
+            });
+
+
+
             //添加留言
 //     weibo?act=add&content=xxx	添加一条
             $scope.submitMsg=function () {
@@ -128,7 +167,7 @@
     <div class="commentOn">
         <div class="noContent" ng-show="replies.length==0">暂无留言</div>
         <div class="page">
-            <a href="javascript:;" ng-repeat=" i in  pages" class="active"  ng-click="getpage(i)" >{{i}}</a>
+            <a href="javascript:;" ng-repeat=" item in  pages" class="{{item.className}}"  ng-click="getpage(item.no)" >{{item.no}}</a>
         </div>
 
         <div class="messList">
@@ -145,7 +184,7 @@
             </div>
         </div>
         <div class="page">
-            <a href="javascript:;" ng-repeat=" i in  pages" class="active"  ng-click="getpage(i)" >{{i}}</a>
+            <a href="javascript:;" ng-repeat=" item in  pages" class="{{item.className}}"  ng-click="getpage(item.no)" >{{item.no}}</a>
         </div>
     </div>
 </div>
