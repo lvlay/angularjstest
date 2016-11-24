@@ -11,6 +11,7 @@
 
             //模拟一个评论的数组
             $scope.replies = [];
+            $scope.pages=[1,2,3,4];
 
             //访问服务器端获得评论列表 并且显示
             //weibo?act=get&page=1
@@ -20,6 +21,7 @@
                     responseType: 'json'
                 }).success(function (arr) {
                             $scope.replies = arr;
+
                         }
                 ).error(function (err) {
                             console.log(err);
@@ -28,6 +30,8 @@
 
             }
             getpage(1);
+
+            $scope.getpage=getpage;
             //添加留言
 //     weibo?act=add&content=xxx	添加一条
             $scope.submitMsg=function () {
@@ -37,13 +41,20 @@
                     params:{act:'add',content:$scope.inputMsg},
                     responseType:'json'
                 }).success(function (res) {
-                    $scope.replies.push({
-                        _id:res._id,
-                        content:$scope.inputMsg,
-                        rcc:0,
-                        ref:0,
-                        createTime:res.createTime
-                    })
+//                    $scope.replies.unshift({
+//                        _id:res._id,
+//                        content:$scope.inputMsg,
+//                        rcc:0,
+//                        ref:0,
+//                        createTime:res.createTime
+//                    })
+//                    if($scope.replies.length>6)
+//                    {
+//                        $scope.replies.pop();
+//                    }
+
+                    getpage(1);
+
                     $scope.inputMsg="";
                 }).error(
                         function (err) {
@@ -51,6 +62,53 @@
                         }
                 )
             }
+
+            //顶和踩的函数
+            //
+// weibo?act=acc&id=12			顶某一条数据
+// 返回：{error:0}
+//
+// weibo?act=ref&id=12			踩某一条数据
+// 返回：{error:0}
+//
+            $scope.fnRcc=function (id) {
+                $http.get('/weibo',{
+                    params:{act:'rcc',id:id},
+                    responseType:'json'
+                }).success(function () {
+                    //修改前台页面里赞的数量 +1
+                    for(var i=0;i<$scope.replies.length;i++)
+                    {
+                        if($scope.replies[i]._id==id)
+                        {
+                            $scope.replies[i].rcc++;
+                        }
+                    }
+
+                }).error(function(err){
+                    console.log(err);
+                });
+
+            };
+            $scope.fnRef=function (id) {
+                $http.get('/weibo',{
+                    params:{act:'ref',id:id},
+                    responseType:'json'
+                }).success(function () {
+                    //修改前台页面里赞的数量 +1
+                    for(var i=0;i<$scope.replies.length;i++)
+                    {
+                        if($scope.replies[i]._id==id)
+                        {
+                            $scope.replies[i].ref++;
+                        }
+                    }
+
+                }).error(function(err){
+                    console.log(err);
+                });
+            }
+
 
         })
     </script>
@@ -68,24 +126,26 @@
     </div>
     <!--已留-->
     <div class="commentOn">
-        <div class="noContent">暂无留言</div>
+        <div class="noContent" ng-show="replies.length==0">暂无留言</div>
+        <div class="page">
+            <a href="javascript:;" ng-repeat=" i in  pages" class="active"  ng-click="getpage(i)" >{{i}}</a>
+        </div>
+
         <div class="messList">
             <div class="reply" ng-repeat="reply in replies">
                 <p class="replyContent">{{reply.content}}</p>
                 <p class="operation">
                     <span class="replyTime">{{reply.createTime|date:'yyyy年MM月dd日 HH:mm:ss'}}</span>
                     <span class="handle">
-                    	<a href="javascript:;" class="top">{{reply.rcc}}</a>
-                        <a href="javascript:;" class="down_icon">{{reply.ref}}</a>
+                    	<a href="javascript:;" ng-click="fnRcc(reply._id)" class="top">{{reply.rcc}}</a>
+                        <a href="javascript:;" class="down_icon" ng-click="fnRef(reply._id)">{{reply.ref}}</a>
                         <a href="javascript:;" class="cut">删除</a>
                     </span>
                 </p>
             </div>
         </div>
         <div class="page">
-            <a href="javascript:;" class="active">1</a>
-            <a href="javascript:;">2</a>
-            <a href="javascript:;">3</a>
+            <a href="javascript:;" ng-repeat=" i in  pages" class="active"  ng-click="getpage(i)" >{{i}}</a>
         </div>
     </div>
 </div>

@@ -80,6 +80,13 @@ app.get('/weibo', function (req, resp, next) {
 
             break;
 
+//
+// weibo?act=acc&id=12			顶某一条数据
+// 返回：{error:0}
+//
+// weibo?act=ref&id=12			踩某一条数据
+// 返回：{error:0}
+//
 
         case  'rcc':
         case  'ref':
@@ -93,11 +100,4 @@ app.get('/weibo', function (req, resp, next) {
     }
 })
 
-//
-// weibo?act=acc&id=12			顶某一条数据
-// 返回：{error:0}
-//
-// weibo?act=ref&id=12			踩某一条数据
-// 返回：{error:0}
-//
 app.listen(3000);
