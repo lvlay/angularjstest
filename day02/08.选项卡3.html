@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="news">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        #div1 input {
+            background-color: #ccc;
+        }
+
+        #div1 input.active {
+            background-color: red;
+        }
+
+        #div1 div {
+            width: 200px;
+            height: 200px;
+            background: #669900;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+
+<div id="div1" ng-controller="ctrl1">
+    <input type="button" value="{{item.name}}"
+           class="{{now==$index?'active':''}}"
+           ng-click="fn($index)" ng-repeat="item in arr">
+    <div ng-repeat="item in arr" ng-show="now==$index">
+        <ul>
+              <li ng-repeat="news in  item.newsList">
+                  <a href="{{news.href}}">{{news.title}}</a>
+              </li>
+        </ul>
+    </div>
+</div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    //定义模块
+    var app = angular.module('news', []);
+    app.controller('ctrl1', function ($scope) {
+        $scope.now = 0;
+        $scope.arr = [
+            {
+                name: '国内新闻',
+                newsList: [{
+                    title: '追梦:被詹皇跨过绝不能忍',
+                    href: 'http://sports.sina.com.cn/basketball/nba/2016-11-25/doc-ifxyawmm3318849.shtml'
+                },
+                    {
+                        title: '追梦:被詹皇跨过绝不能忍aaa',
+                        href: 'http://sports.sina.com.cn/basketball/nba/2016-11-25/doc-ifxyawmm3318849.shtml'
+                    },
+                    {
+                        title: '追梦:被詹皇跨过绝不能忍bbb',
+                        href: 'http://sports.sina.com.cn/basketball/nba/2016-11-25/doc-ifxyawmm3318849.shtml'
+                    },
+                ]
+            },
+            {
+                name: '国外新闻',
+                newsList: [{
+                    title: '追梦:被詹皇跨过绝不能忍ccc',
+                    href: 'http://sports.sina.com.cn/basketball/nba/2016-11-25/doc-ifxyawmm3318849.shtml'
+                },
+                    {
+                        title: '追梦:被詹皇跨过绝不能忍2222',
+                        href: 'http://sports.sina.com.cn/basketball/nba/2016-11-25/doc-ifxyawmm3318849.shtml'
+                    },
+                    {
+                        title: '追梦:被詹皇跨过绝不能忍1111',
+                        href: 'http://sports.sina.com.cn/basketball/nba/2016-11-25/doc-ifxyawmm3318849.shtml'
+                    },
+                ]
+            }, {
+                name: '本地新闻',
+                newsList: [{
+                    title: '追梦:ddddd',
+                    href: 'http://sports.sina.com.cn/basketball/nba/2016-11-25/doc-ifxyawmm3318849.shtml'
+                },
+                    {
+                        title: '追梦:gsfsdfs',
+                        href: 'http://sports.sina.com.cn/basketball/nba/2016-11-25/doc-ifxyawmm3318849.shtml'
+                    },
+                    {
+                        title: '追梦:sgfdhdf',
+                        href: 'http://sports.sina.com.cn/basketball/nba/2016-11-25/doc-ifxyawmm3318849.shtml'
+                    },
+                ]
+            }];
+
+        $scope.fn = function (v) {
+            $scope.now = v;
+        }
+    });
+
+</script>
+</html>

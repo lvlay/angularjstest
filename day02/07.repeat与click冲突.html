@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body  ng-init="arr=[23,12,54];a=3"  ng-controller="ctrl1">
+ {{a}}
+
+ <!--<input type="button"  value="确定" ng-click="a=11">-->
+
+ <input type="button" ng-repeat="v in  arr"  value="确定" ng-click="fn(v)">
+
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+
+<script type="application/javascript">
+    var app=angular.module("test",[]);
+    
+    app.controller('ctrl1', function ($scope) {
+        
+        $scope.fn=function (value) {
+            $scope.a=value;
+        }
+        
+    })
+</script>
+</html>

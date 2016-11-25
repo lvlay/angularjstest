@@ -66,6 +66,12 @@
 * ng-show/ng-hidden   show/hidden实际控制的是display属性
 * ng-if 如果条件为false,那么它所控制的页面元素将会被删除
 
+### ng-repeat会与ng-click冲突 
+ 1.直接在click事件中对ng里的变量赋值就会产生冲突
+ 2.在控制器中定义一个函数,然后在click事件里调用这个函数,间接修改变量
+ 
+###  ng-repeat的循环嵌套 
+
 ## 代码仓库地址
 https://github.com/lvlay/angularjstest
 
