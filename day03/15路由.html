@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+
+<a href="#/users.html">用户中心</a> <a href="#/goods.html">商品列表</a> <a href="#/shopcar.html">购物车</a>
+ <ng-view></ng-view>
+
+
+
+</body>
+
+<script src="http://cdn.bootcss.com/angular.js/1.5.8/angular.min.js"></script>
+<script src="http://cdn.bootcss.com/angular.js/1.5.8/angular-route.js"></script>
+<script src="./cotroller/user.js"></script>
+<script type="application/javascript">
+    //引入angular的路由模块
+    var app=angular.module('test',['ngRoute','userMod']);
+    //配置路由
+    app.config(function ($routeProvider) {
+        //加载路由对象
+        $routeProvider
+                .when('/users.html',
+                        {
+                            templateUrl:'./views/user.html',
+                            controller:'userController'
+                        }
+                )
+                .when('/goods.html',
+                        {
+                            template:'<h1>商品列表首页</h1>'
+                        }
+                )
+                .when('/shopcar.html',
+                        {
+                            template:'<h1>我的购物车</h1>'
+                        }
+                )
+
+    })
+
+
+ </script>
+
+</html>

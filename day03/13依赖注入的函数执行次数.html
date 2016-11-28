@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div ng-controller="ctrl1"></div>
+    <div ng-controller="ctrl2"></div>
+    <div ng-controller="ctrl3"></div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    var app=angular.module('test',[]);
+    app.factory('userinfo',function () {
+        console.log("userinfo执行");
+        //这里返回的对象是所有控制器共享的
+        return {
+             username:'tom',
+             age:18
+        }
+    })
+    app.controller('ctrl1',function ($scope,userinfo) {
+        userinfo.age=20;
+    });
+    app.controller('ctrl2',function ($scope,userinfo) {
+        console.log(userinfo.age);
+        userinfo.age=31;
+    });
+    app.controller('ctrl3',function ($scope,userinfo) {
+        console.log(userinfo.age);
+    });
+ </script>
+
+</html>

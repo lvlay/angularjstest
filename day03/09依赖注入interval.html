@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body ng-controller="ctrl1">
+    <div>{{a}}</div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    angular.module('test',[])
+            .controller('ctrl1',function ($scope,$interval) {
+                $scope.a=0;
+                $interval(function () {
+                    $scope.a++
+                },1000);
+
+            });
+</script>
+
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div ng-controller="ctrl1"></div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    var app=angular.module('test',[]);
+    app.factory('myobject',function () {
+
+        return {
+             username:'tom',
+             age:18
+        }
+    })
+    //依赖继承  需要使用代理对象$delegate间接修改被注入的对象
+    app.decorator('myobject',function ($delegate) {
+        $delegate.sex='男';
+
+        return $delegate;
+        
+    })
+    
+     app.controller('ctrl1',function ($scope,myobject) {
+         console.log(myobject);
+    });
+ </script>
+
+</html>

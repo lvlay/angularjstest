@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body ng-controller="ctrl1">
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    var app=angular.module('test',[]);
+    app.factory('sum',function(){
+        console.log('外部的sum');
+        return  function (num1,num2) {
+            console.log('内部的sum');
+            return num1+num2;
+        }
+    });
+         app.controller('ctrl1',function ($scope,sum) {
+                 alert(sum(10,23));
+                 alert(sum(5,7));
+            });
+</script>
+
+</html>

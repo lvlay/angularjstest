@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body ng-controller="ctrl1">
+
+<dropdownlist/>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    var app = angular.module('test',[]);
+    app.controller('ctrl1',function ($scope) {
+        $scope.str="";
+        $scope.arr=['app','apple','snow','new','shirt','bear','coco','icecreen'];
+    })
+    app.directive('dropdownlist',function () {
+        return {
+              restrict:'E',
+            template:'<input type="text" ng-model="str">\
+            <ul>\
+            <li ng-repeat="value in arr" \
+            ng-show="value.indexOf(str)!=-1">\
+            {{value}}</li></ul>'
+        }
+    })
+</script>
+
+</html>

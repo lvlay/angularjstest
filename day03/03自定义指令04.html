@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+   <!-- directive:mysp -->
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    var app = angular.module('test',[]);
+    app.directive('mysp',function () {
+        var json={
+           restrict:'M',  //约束,指明指令类型 取值 E A C M
+            template:'<span>这是我的自定义标签</span>',
+            replace:true
+        };
+        return json;
+    })
+</script>
+
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body ng-controller="ctrl1">
+
+     <input type="text"  ng-model="username"  ><br>
+     <input type="password"  ng-model="pwd"  ><br>
+     <a href="javascript:;" ng-click="login(username,pwd)">登陆</a>
+
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    var app = angular.module('test',[]);
+
+    app.factory('userService',function ($http) {
+
+        //console.log('aaaa');
+        return {
+            login:function (username,pwd) {
+                $http.get('/user',{
+                    params:{username:username,pwd:pwd},
+                    responseType:'json'
+                }).success().error(function(err){
+
+                    console.log(err);
+                });
+            },
+            reg:function (username,pwd,pwd2,email) {
+
+            },
+            sayHello:function (username) {
+
+            }
+        };
+    });
+    app.controller('ctrl1',function($scope,userService) {
+        $scope.username="";
+        $scope.pwd="";
+
+
+          userService.login("tom","123");
+
+    });
+    
+</script>
+
+</html>

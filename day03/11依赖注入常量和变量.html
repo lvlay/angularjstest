@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div ng-controller="ctrl1"></div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    var app=angular.module('test',[]);
+    app.constant('VERSION','1.2');
+    app.value('username','tom');
+
+     app.controller('ctrl1',function ($scope,VERSION,username) {
+         VERSION='2.5';
+         username='jack';
+        console.log(VERSION);
+         console.log(username);
+    });
+ </script>
+
+</html>

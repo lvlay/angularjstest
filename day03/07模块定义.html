@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body ng-app="mod3">
+   <div  ng-controller="ctrl1">{{a|myFilter1}}</div>
+   <div  ng-controller="ctrl2">{{b|myFilter2}}</div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    angular.module("mod1",[])
+            .controller("ctrl1",function ($scope) {
+                $scope.a=5;
+            })
+            .filter('myFilter1',function () {
+
+                return function (value) {
+                    return value+"元";
+                }
+            });
+    angular.module("mod2",[])
+            .controller("ctrl2",function ($scope) {
+                $scope.b=10;
+            }).filter('myFilter2',function () {
+             return function (value) {
+                 return value+"acbc";
+             }});
+
+    angular.module('mod3',['mod1','mod2']);
+
+</script>
+
+</html>

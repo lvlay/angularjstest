@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+    </style>
+</head>
+<body>
+    <div ng-controller="ctrl1">
+        {{a}}<a href="javascript:;" ng-click="sub()">减小</a>
+
+        <div ng-controller="ctrl2">
+            {{a}}<a href="javascript:;" ng-click="add()">增加</a>
+        </div>
+    </div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    var app=angular.module('test',[]);
+    app.controller('ctrl1',function ($scope) {
+        $scope.a=12;
+        $scope.$on('addmsg',function (event,data) {
+            $scope.a=data;
+        });
+
+        $scope.sub=function () {
+            $scope.a--;
+            $scope.$broadcast('submsg',$scope.a);
+        }
+    });
+    app.controller('ctrl2',function ($scope) {
+        $scope.a=15;
+        $scope.add=function()
+        {
+            $scope.a++;
+            //发送给父节点
+            $scope.$emit('addmsg',$scope.a);
+        }
+
+        $scope.$on('submsg',function (event,data) {
+            $scope.a=data;
+
+        })
+
+    });
+ </script>
+
+</html>
