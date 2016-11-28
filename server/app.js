@@ -22,6 +22,7 @@ app.get('/test', function (req, resp, next) {
     var a = parseInt(req.query.a);
     var b = parseInt(req.query.b);
     var result = a + b;
+    console.log(result);
     resp.send(result + '');
 });
 app.get('/weibo', function (req, resp, next) {

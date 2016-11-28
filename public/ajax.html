@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="ctrl1">
+      {{result}}
+</body>
+
+<script type="application/javascript" src="libs/angular.min.js">
+</script>
+<script type="application/javascript" src="js/ajax.js">
+</script>
+
+<script type="application/javascript">
+    
+    var app = angular.module('test',[]);
+    app.controller("ctrl1",function ($scope,$http) {
+       $scope.result=0;
+
+        ajax({
+            url:'/test',
+            type:'get',
+            data:{a:12,b:32},
+            success:function (result) {
+                alert(result);
+                $scope.result=result;
+                $scope.$apply();
+            }
+        });
+    })
+
+</script>
+</html>

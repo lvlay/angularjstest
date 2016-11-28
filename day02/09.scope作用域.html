@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+   <div ng-controller="ctrl2">
+          {{a}}  --- {{b}}
+   </div>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+
+<script type="application/javascript">
+    
+    var app = angular.module('test',[]);
+    app.controller("ctrl1",function ($scope) {
+          $scope.a=10;
+    })
+    app.controller("ctrl2",function ($scope) {
+        $scope.b=12;
+    })
+
+</script>
+</html>

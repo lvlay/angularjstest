@@ -72,7 +72,47 @@
  
 ###  ng-repeat的循环嵌套 
 
+
+### $scope作用域对象
+    1.$rootScope顶级作用域对象
+    2.$scope子作用域对象 和所在的模块及作用域有关
+
+### $watch监视$scope中的数据
+   1.监视普通变量
+   2.监视数组  有两种情况,默认是监视数组对象的地址是不是改变
+   3.想监视数组的内容是不是改变需要加第3个参数deepWatch=true
 ## 代码仓库地址
+
+
+### AngularJS代码中混杂原生js代码,并且在原生js代码中尝试修改$scope里的值,并不会引起页面的更新,如果想要修改生效需要调用
+$scope.$apply();强制生效
+
+
+### 定时器
+* 原生的定时器setInterval和setTimeout在AngularJS中混合使用需要调用$scope.apply()让修改生效
+* Angular中提供了 $interval和$timeout可替代原生定时器
+* 使用时要在定义控制器时,通过参数注入进来
+```
+ app.controller("ctrl1", function ($scope,$interval)
+  
+```
+
+
+### 百度搜索框
+*  百度搜索的jsonp地址
+http://suggestion.baidu.com/su?wd=ai&cb=test
+*  使用angularJS的$http.jsonp()方法提交请求
+*  需要两个参数,第一个参数wd是关键字  第2个参数cb是你的回调函数的名字
+*  在angularjs中jsonp回调函数的名字必须是 JSON_CALLBACK
+
+
+### 过滤器
+
+* 自定义过滤器的定义 app.filter('名字',function())
+第2个参数是一个回调函数,这个回调函数的返回值必须是一个function对象,过滤器的功能就要写到这个返回的function中。
+* 过滤器传参 可以在应用过滤器时,在过滤器名字后面用:冒号附加参数
+
+
 https://github.com/lvlay/angularjstest
 
 

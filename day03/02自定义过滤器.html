@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="ctrl1">
+
+<div ng-controller="ctrl1">{{time|mydate:'yyyy年MM月dd日':18}}</div>
+<ul>
+    <li  ng-repeat="value in arr">{{value|myFilter1}} </li>
+</ul>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+  var app =  angular.module('test',[]);
+    app.filter('myFilter1',function () {
+       //filter只会执行一次 这里只会做一些初始化操作
+        alert('filter执行');
+        //返回值必须是一个function
+        //实际的过滤工作都会由这个返回函数完成
+        return function (value) {
+            //过滤器的逻辑功能都要定义在这个function中
+            alert('返回函数执行');
+           return "¥"+value+"元";
+        }
+    });
+    app.filter('mydate',function () {
+
+        return function (time,format,aaa) {
+            alert(time+"  "+format+" " +aaa);
+        }
+        
+    })
+    app.controller('ctrl1',function ($scope) {
+        $scope.arr=[12.4,45.5,32,56.3,43];
+        $scope.time=1480295468719;
+
+    })
+
+</script>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="ctrl1">
+
+<input type="text" ng-model="a">+
+<input type="text" ng-model="b">={{result}}
+
+</body>
+
+<script type="application/javascript" src="libs/angular.min.js">
+</script>
+
+<script type="application/javascript">
+    
+    var app = angular.module('test',[]);
+    app.controller("ctrl1",function ($scope,$http) {
+        $scope.a=0;
+        $scope.b=0;
+        $scope.result=0;
+
+        $scope.$watch('a',function () {
+            $http.get('/test',{
+                params:{a:$scope.a,b:$scope.b},
+                responseType:'json'
+            }).success(function (result) {
+                   $scope.result=result;
+            }).error(function(err){
+                console.log(err);
+            });
+        })
+        $scope.$watch('b',function () {
+            $http.get('/test',{
+                params:{a:$scope.a,b:$scope.b},
+                responseType:'json'
+            }).success(function (result) {
+                $scope.result=result;
+            }).error(function(err){
+                console.log(err);
+            });
+        })
+    })
+
+</script>
+</html>

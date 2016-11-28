@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="ctrl1">
+
+   <div>现在时间是:{{time|date:'yyyy-MM-dd'}}</div>
+   <ul>
+       <li  ng-repeat="value in arr">{{value|currency}} </li>
+   </ul>
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+<script type="application/javascript">
+    angular.module('test',[])
+            .controller('ctrl1',function ($scope) {
+
+                $scope.arr=[23,12.3,45.5,53.6,67,63]
+                $scope.time=1480295468719;
+            })
+    
+</script>
+
+</html>

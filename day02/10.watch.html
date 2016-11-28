@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="test">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body ng-controller="ctrl1">
+
+<input type="text" ng-model="num">
+   {{num}}
+
+<br> <input type="button" value="点击" ng-click="arr.push(11)">
+</body>
+
+<script type="application/javascript" src="../public/libs/angular.min.js">
+</script>
+
+<script type="application/javascript">
+    
+    var app = angular.module('test',[]);
+    app.controller("ctrl1",function ($scope) {
+        $scope.num=0;
+        $scope.arr=[12,31,223,5];
+       $scope.$watch('arr',function () {
+             alert('arr变了');
+       },true);//深度监视
+
+    })
+
+</script>
+</html>
